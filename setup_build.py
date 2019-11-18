@@ -209,7 +209,8 @@ DEF COMPLEX256_SUPPORT = %(complex256_support)s
         print("Executing cythonize()")
         self.extensions = cythonize(self._make_extensions(config),
                                     force=config.rebuild_required or self.force,
-                                    language_level=3)
+                                    language_level=3,
+                                    compiler_directives= {'linetrace': True})
         self.check_rerun_cythonize()
 
         # Perform the build
